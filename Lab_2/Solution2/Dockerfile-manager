@@ -1,0 +1,11 @@
+FROM mcr.microsoft.com/dotnet/sdk:5.0
+FROM mcr.microsoft.com/dotnet/aspnet:5.0-buster-slim AS base
+FROM mcr.microsoft.com/dotnet/sdk:5.0.102-ca-patch-buster-slim AS build
+WORKDIR /app
+VOLUME [ "/data" ]
+COPY AllProtos AllProtos
+COPY Manager Manager
+WORKDIR /app/Manager
+RUN dotnet restore
+RUN dotnet publish -c Release -o out
+ENTRYPOINT [ "dotnet", "out/Manager.dll" ]

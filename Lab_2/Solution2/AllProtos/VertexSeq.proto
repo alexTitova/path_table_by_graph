@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+option csharp_namespace ="AllProtos";
+
+package vertexseq;
+
+service VertexSeq
+{
+  rpc GetVertexPath(VertRequest) returns (VertResponse);
+}
+
+
+message VertRequest
+{
+  int32 start_vertex =1;
+  int32 end_vertex =2;
+  string names=3;
+  repeated string graph_matrix_adj=4;
+}
+
+message VertResponse
+{
+  string vertex_sequence=1;
+}
+
+
+
+
+    

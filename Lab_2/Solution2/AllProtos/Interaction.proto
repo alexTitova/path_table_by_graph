@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+option csharp_namespace = "AllProtos";
+
+package interaction;
+
+service Interaction
+{
+  rpc CreateG(NameRequest) returns (MatrixResponse);
+  rpc DekstraAlgoritm(AlgoritmRequest) returns (AlgoritmResponse);
+  rpc VeretxSequence(VertexRequest) returns (VertexResponse);
+}
+
+message NameRequest
+{
+  string names=1;
+  int32 count =2;
+}
+
+message MatrixResponse
+{
+  repeated string matrix_adj =1;
+}
+
+message AlgoritmRequest
+{
+  string names=1;
+  repeated string graph_matrix_agj =2;
+}
+
+message AlgoritmResponse
+{
+  repeated string path_tab=1;
+}
+
+message VertexRequest
+{
+  bool is_needed=1;
+  int32 start_vertex =2;
+  int32 end_vertex =3;
+  string names=4;
+  repeated string graph_matrix_adj=5;
+  
+}
+
+message VertexResponse
+{
+  string vertex_sequence=1;
+}
+
+
+

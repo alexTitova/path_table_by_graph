@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option csharp_namespace = "AllProtos";
+
+package creatinggraph;
+
+service CreartingGraph
+{
+  rpc Creating(GraphRequest) returns (GraphResponse);
+}
+
+message GraphRequest
+{
+  string names=1;
+  int32  count =2;
+}
+
+message GraphResponse
+{
+  repeated string matrix =1;
+}

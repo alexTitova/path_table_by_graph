@@ -1,0 +1,1 @@
+docker network create -d bridge distributed_system_network

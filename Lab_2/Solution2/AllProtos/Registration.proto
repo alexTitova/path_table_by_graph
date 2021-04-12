@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option csharp_namespace = "AllProtos";
+
+package registration;
+
+service Registration
+{
+  rpc Regist(RegistRequest) returns (RegistResponce);
+}
+
+message RegistRequest
+{
+  string  host=1;
+  int32 port =2;
+  string password =3;
+}
+
+message RegistResponce
+{
+  bool is_registered=1;
+}
+
+

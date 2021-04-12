@@ -1,0 +1,14 @@
+FROM mcr.microsoft.com/dotnet/sdk:5.0
+FROM mcr.microsoft.com/dotnet/aspnet:5.0-buster-slim AS base
+FROM mcr.microsoft.com/dotnet/sdk:5.0.102-ca-patch-buster-slim AS build
+WORKDIR /app
+VOLUME [ "/data" ]
+COPY AllProtos/CreatingGraph.proto AllProtos/
+COPY AllProtos/Registration.proto AllProtos/
+COPY AllProtos/Dekstra.proto AllProtos/
+COPY AllProtos/VertexSeq.proto AllProtos/
+COPY Worker Worker
+WORKDIR /app/Worker
+RUN dotnet restore
+RUN dotnet publish -c Release -o out
+ENTRYPOINT [ "dotnet", "out/Worker.dll"]

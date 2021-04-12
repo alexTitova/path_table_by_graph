@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option csharp_namespace = "AllProtos";
+
+package dekstra;
+
+service Dekstra
+{
+  rpc Algoritm (DekRequest) returns (DekResponse);
+}
+
+message DekRequest
+{
+  repeated string matrix_adj=1;
+  string names=2;
+}
+
+message DekResponse
+{
+  repeated string path_table=1;
+}
